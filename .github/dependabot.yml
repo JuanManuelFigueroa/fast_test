@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Enable version updates for pip
+  - package-ecosystem: "pip"
+    directory: "/"
+    target-branch: "master"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "chore(pip)"
+    pull-request-branch-name:
+      separator: "-"
+    open-pull-request-limit: 2
