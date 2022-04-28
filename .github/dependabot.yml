@@ -3,7 +3,7 @@ updates:
   # Enable version updates for pip
   - package-ecosystem: "pip"
     directory: "/"
-    target-branch: "master"
+    target-branch: "main"
     schedule:
       interval: "daily"
     commit-message:
