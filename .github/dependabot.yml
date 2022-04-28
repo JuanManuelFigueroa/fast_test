@@ -10,4 +10,4 @@ updates:
       prefix: "chore(pip)"
     pull-request-branch-name:
       separator: "-"
-    open-pull-request-limit: 2
+    open-pull-requests-limit: 2
