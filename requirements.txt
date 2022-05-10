@@ -3,3 +3,4 @@ uvicorn[standard]
 SQLAlchemy==1.4.36
 pytest==7.1.2
 pytest-cov==3.0.0
+requests==2.27.1
