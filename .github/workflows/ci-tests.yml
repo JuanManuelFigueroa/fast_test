@@ -49,6 +49,7 @@ jobs:
         with:
           coverageCommand: coverage xml
           coverageLocations: |
-            /*.xml:coverage.py
+            ${{github.workspace}}/coverage.xml:coverage.py
+            ${{github.workspace}}/coverage1.xml:coverage.py
           debug: true
           
