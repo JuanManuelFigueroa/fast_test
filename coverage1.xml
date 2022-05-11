@@ -8,7 +8,9 @@
 			<classes>
 				<class name="exclude.py" filename="exclude.py" complexity="0" line-rate="1" branch-rate="0">
 					<methods/>
-					<lines/>
+					<lines>
+						<line number="1" hits="1"/>
+					</lines>
 				</class>
 			</classes>
 		</package>
