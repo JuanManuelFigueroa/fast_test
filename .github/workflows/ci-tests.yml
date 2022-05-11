@@ -40,10 +40,13 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest --junitxml=test-reports/junit.xml --cov-report html --cov=main
+          coverage run -m pytest
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: coverage xml
+          debug: true
           
