@@ -25,12 +25,24 @@ async def path():
     a = 'at all'
     return {"msg": "path"}
 
-# @app.on_event("startup")
-# async def startup_event():
-#     cov.start()
+@app.get("/route2")
+async def route2():
+    m = 'more lines'
+    t = 'to coverage'
+    a = 'at all'
+    return {"msg": "route2"}
 
-# @app.on_event("shutdown")
-# async def shutdown_event():
-#     cov.stop()
-#     cov.save()
-#     cov.html_report()
+@app.get("/path2")
+async def path2():
+    m = 'more lines'
+    t = 'to coverage'
+    a = 'at all'
+    return {"msg": "path2"}
+
+@app.on_event("startup")
+async def startup_event():
+    print('startup')
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    print('shutdown')
