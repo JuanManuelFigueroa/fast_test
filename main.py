@@ -39,6 +39,20 @@ async def path2():
     a = 'at all'
     return {"msg": "path2"}
 
+@app.get("/route3")
+async def route3():
+    m = 'more lines'
+    t = 'to coverage'
+    a = 'at all'
+    return {"msg": "route3"}
+
+@app.get("/path3")
+async def path3():
+    m = 'more lines'
+    t = 'to coverage'
+    a = 'at all'
+    return {"msg": "path3"}
+
 @app.on_event("startup")
 async def startup_event():
     print('startup')
