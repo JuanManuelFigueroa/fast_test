@@ -48,5 +48,8 @@ jobs:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
           coverageCommand: coverage xml
+          coverageLocations: |
+            ${{github.workspace}}/coverage.xml
+            ${{github.workspace}}/coverage1.xml
           debug: true
           
