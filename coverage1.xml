@@ -4,5 +4,8 @@
 		<source>/Users/juanmanuelfigueroa/python-stuff/fast_test</source>
 	</sources>
 	<packages>
+		<package name="." line-rate="0" branch-rate="0" complexity="0">
+			<classes />
+		</package>
 	</packages>
 </coverage>
