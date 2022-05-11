@@ -39,10 +39,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run unit tests
-        uses: paambaati/codeclimate-action@v2.2.4
+        run: |
+          pytest --junitxml=test-reports/junit.xml --cov-report html --cov=main
+
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          coverageCommand: |
-            pytest --junitxml=test-reports/junit.xml --cov-report xml --cov=main
           
