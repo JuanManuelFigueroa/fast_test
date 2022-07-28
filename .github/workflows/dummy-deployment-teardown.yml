@@ -1,0 +1,37 @@
+# Docs
+# Enable auto-merge for dependabot PRs
+# when updating dependencies on minor and patch version.
+
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
+
+name: Dummy deployment teardown
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Format step
+      run: echo $TOKEN ${{ toJSON(env.BODY) }}
+      env:
+        TOKEN: token123
+        BODY: '{"branch": "master", "parameters": {"deploy_dev": true, "SLS_STAGE": "github.event.pull_request.number"}}'
+    - name: Format step 2
+      run: echo ${{ format(env.B2, github.event.pull_request.number) }}
+      env:
+        B2: '{{"branch": "master", "parameters": {{"deploy_dev": true, "SLS_STAGE": {0} }}}}'
+    - name: Remove Stage
+      id: myRequest
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://cba8-190-189-236-190.sa.ngrok.io/pipeline/'
+        method: 'POST'
+        customHeaders: ${{ format(env.HEADERS, 'A valid token') }}
+        data: ${{ format(env.BODY, github.event.pull_request.number) }}
+      env:
+        HEADERS: '{{"Content-Type": "application/json", "Accept": "application/json", "Circle-Token": "{0}" }}'
+        BODY: '{{"branch": "master", "parameters": {{"deploy_dev": true, "SLS_STAGE": {0} }}}}'
+    - name: Show Response
+      run: echo ${{ steps.myRequest.outputs.response }}
