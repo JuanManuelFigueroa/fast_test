@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Format step
-      run: echo 'lala' #s${{ format('branch={0}', github.event.pull_request.number)
+      run: echo ${{TOKEN}}
+      env:
+        TOKEN: token123
+        BODY: {"branch": "master", "parameters": {"deploy_dev": true, "SLS_STAGE": "github.event.pull_request.number"}}
     - name: Remove Stage
       id: myRequest
       uses: fjogeleit/http-request-action@v1
@@ -21,5 +24,8 @@ jobs:
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Accept": "application/json", "Circle-Token":"token"}'
         data: '{"branch": "master", "parameters": {"deploy_dev": true, "SLS_STAGE": "github.event.pull_request.number"}}'
+      env:
+        TOKEN: token123
+        BODY: {"branch": "master", "parameters": {"deploy_dev": true, "SLS_STAGE": "github.event.pull_request.number"}}
     - name: Show Response
       run: echo ${{ steps.myRequest.outputs.response }}
