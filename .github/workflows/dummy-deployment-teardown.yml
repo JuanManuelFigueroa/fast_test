@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Format step
-      run: echo ${{ format('branch={0}', github.event.pull_request.number)
+      run: echo 'lala' #s${{ format('branch={0}', github.event.pull_request.number)
     - name: Remove Stage
       id: myRequest
       uses: fjogeleit/http-request-action@v1
