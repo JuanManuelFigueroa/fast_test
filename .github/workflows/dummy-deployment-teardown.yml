@@ -19,7 +19,7 @@ jobs:
     - name: Format step 2
       run: echo ${{ format(env.B2, github.event.pull_request.number) }}
       env:
-        B2: '{"branch": "master", "parameters": {"deploy_dev": true, "SLS_STAGE": {0}}}'
+        B2: '{{"branch": "master", "parameters": {{"deploy_dev": true, "SLS_STAGE": {0} }}}}'
     - name: Remove Stage
       id: myRequest
       uses: fjogeleit/http-request-action@v1
