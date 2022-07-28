@@ -1,0 +1,25 @@
+# Docs
+# Enable auto-merge for dependabot PRs
+# when updating dependencies on minor and patch version.
+
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
+
+name: Dummy deployment teardown
+on: pull_request
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Format step
+      run: echo ${{ format('https://5b21-190-189-236-190.sa.ngrok.io/pipeline/{0}', github.event.pull_request.number) }}
+    - name: Remove Stage
+      id: myRequest
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://5b21-190-189-236-190.sa.ngrok.io/pipeline/'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json", "Accept": "application/json", "Circle-Token":"token"}'
+        data: '{"branch": "master", "parameters": {"deploy_dev": True, "SLS_STAGE": ${{ github.event.pull_request.number }}}}'
+    - name: Show Response
+      run: echo ${{ steps.myRequest.outputs.response }}
