@@ -24,7 +24,7 @@ jobs:
       id: myRequest
       uses: fjogeleit/http-request-action@v1
       with:
-        url: 'https://5b21-190-189-236-190.sa.ngrok.io/pipeline/'
+        url: 'https://cba8-190-189-236-190.sa.ngrok.io/pipeline/'
         method: 'POST'
         customHeaders: ${{ format(env.HEADERS, 'A valid token') }}
         data: ${{ format(env.BODY, github.event.pull_request.number) }}
