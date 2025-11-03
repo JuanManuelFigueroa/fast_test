@@ -1,4 +1,4 @@
-fastapi==0.120.3
+fastapi==0.121.0
 uvicorn[standard]
 SQLAlchemy==2.0.44
 pytest==8.4.2
