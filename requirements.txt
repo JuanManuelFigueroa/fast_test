@@ -1,6 +1,6 @@
 fastapi==0.121.0
 uvicorn[standard]
 SQLAlchemy==2.0.44
-pytest==8.4.2
+pytest==9.0.0
 pytest-cov==7.0.0
 requests==2.32.5
